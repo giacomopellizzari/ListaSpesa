@@ -109,13 +109,14 @@ public class Spesagrafica {
 				c=codiceProdotto.getText();
 				d=nome.getText();
 				r=Float.parseFloat(prezzo.getText());
+				s=new Prodotto(c,d,r);
 				try {
 					lista.aggiungiProdotto(s);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				s=new Prodotto(c,d,r);
+				
 			}
 		});
 		btnAggiungiProdotto.setBounds(305, 123, 119, 25);
