@@ -8,6 +8,9 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.TableColumn;
 
 public class Spesagrafica {
 
@@ -26,6 +29,7 @@ public class Spesagrafica {
 	private float r;
 	ListaSpesa lista= new ListaSpesa(p);
 	Prodotto s;
+	private Table table;
 
 	/**
 	 * Launch the application.
@@ -60,7 +64,7 @@ public class Spesagrafica {
 	 */
 	protected void createContents() {
 		shlJackzando = new Shell();
-		shlJackzando.setSize(450, 196);
+		shlJackzando.setSize(508, 398);
 		shlJackzando.setText("Supermercati JAck&ZAndo");
 		
 		Button aggiungiScontrino = new Button(shlJackzando, SWT.NONE);
@@ -146,6 +150,12 @@ public class Spesagrafica {
 		btnCaricaScontrino.setText("Carica scontrino");
 		
 		Button btnAlimentare = new Button(shlJackzando, SWT.CHECK);
+		btnAlimentare.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				
+			}
+		});
 		btnAlimentare.setBounds(235, 101, 76, 16);
 		btnAlimentare.setText("Alimentare");
 		
@@ -159,6 +169,33 @@ public class Spesagrafica {
 		
 		totale = new Text(shlJackzando, SWT.BORDER);
 		totale.setBounds(117, 45, 76, 21);
+		
+		table = new Table(shlJackzando, SWT.BORDER | SWT.FULL_SELECTION);
+		table.setBounds(10, 154, 449, 196);
+		table.setHeaderVisible(true);
+		table.setLinesVisible(true);
+		
+		TableColumn tblclmnNome = new TableColumn(table, SWT.NONE);
+		tblclmnNome.setWidth(100);
+		tblclmnNome.setText("Nome");
+		tblclmnNome.setText(s.getDescrizione());
+		
+		TableColumn tblclmnCodice = new TableColumn(table, SWT.NONE);
+		tblclmnCodice.setWidth(74);
+		
+		TableColumn tblclmnPrezzo = new TableColumn(table, SWT.NONE);
+		tblclmnPrezzo.setWidth(78);
+		
+		TableColumn tblclmnTipo = new TableColumn(table, SWT.NONE);
+		tblclmnTipo.setWidth(36);
+		
+		TableColumn tblclmnDataScadenza = new TableColumn(table, SWT.NONE);
+		tblclmnDataScadenza.setWidth(89);
+		tblclmnDataScadenza.setText("Data scadenza");
+		
+		TableColumn tblclmnMateriale = new TableColumn(table, SWT.NONE);
+		tblclmnMateriale.setWidth(65);
+		tblclmnMateriale.setText("Materiale");
 
 	}
 }
