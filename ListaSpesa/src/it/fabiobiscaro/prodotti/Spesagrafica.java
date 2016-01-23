@@ -25,7 +25,7 @@ public class Spesagrafica {
 	// prexxo
 	private float r;
 	ListaSpesa lista= new ListaSpesa(p);
-	Prodotto s = new Prodotto(c,d,r);
+	Prodotto s;
 
 	/**
 	 * Launch the application.
@@ -115,6 +115,7 @@ public class Spesagrafica {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+				s=new Prodotto(c,d,r);
 			}
 		});
 		btnAggiungiProdotto.setBounds(305, 123, 119, 25);
