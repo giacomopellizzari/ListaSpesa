@@ -15,6 +15,7 @@ public class Spesagrafica {
 	private Text codiceProdotto;
 	private Text tipo;
 	private Text prezzo;
+	private Text totale;
 
 	/**
 	 * Launch the application.
@@ -111,6 +112,13 @@ public class Spesagrafica {
 		Button btnNonAlimentare = new Button(shlJackzando, SWT.CHECK);
 		btnNonAlimentare.setBounds(317, 101, 107, 16);
 		btnNonAlimentare.setText("Non alimentare");
+		
+		Button btnCalcolaTotale = new Button(shlJackzando, SWT.NONE);
+		btnCalcolaTotale.setBounds(10, 41, 101, 25);
+		btnCalcolaTotale.setText("Calcola totale");
+		
+		totale = new Text(shlJackzando, SWT.BORDER);
+		totale.setBounds(117, 45, 76, 21);
 
 	}
 }
