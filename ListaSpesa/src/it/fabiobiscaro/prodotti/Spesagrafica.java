@@ -13,9 +13,19 @@ public class Spesagrafica {
 
 	protected Shell shlJackzando;
 	private Text codiceProdotto;
-	private Text tipo;
+	private Text nome;
 	private Text prezzo;
 	private Text totale;
+	private boolean p;
+	private Button btnTesseraFedelt;
+	// codice
+	private String c;
+	// descrizione
+	private String d;
+	// prexxo
+	private float r;
+	ListaSpesa lista= new ListaSpesa(p);
+	Prodotto s = new Prodotto(c,d,r);
 
 	/**
 	 * Launch the application.
@@ -54,6 +64,14 @@ public class Spesagrafica {
 		shlJackzando.setText("Supermercati JAck&ZAndo");
 		
 		Button aggiungiScontrino = new Button(shlJackzando, SWT.NONE);
+		aggiungiScontrino.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				p=btnTesseraFedelt.getSelection();
+				System.out.println(p);
+				
+			}
+		});
 		aggiungiScontrino.setBounds(10, 10, 114, 25);
 		aggiungiScontrino.setText("Aggiungi scontrino");
 		
@@ -61,11 +79,15 @@ public class Spesagrafica {
 		codiceProdotto.setText("");
 		codiceProdotto.setBounds(348, 14, 76, 21);
 		
-		tipo = new Text(shlJackzando, SWT.BORDER);
-		tipo.setBounds(348, 41, 76, 21);
+		
+		nome = new Text(shlJackzando, SWT.BORDER);
+		nome.setBounds(348, 41, 76, 21);
+		
 		
 		prezzo = new Text(shlJackzando, SWT.BORDER);
 		prezzo.setBounds(348, 68, 76, 21);
+		
+		
 		
 		Label lblcodiceProdotto = new Label(shlJackzando, SWT.NONE);
 		lblcodiceProdotto.setBounds(252, 20, 90, 15);
@@ -79,14 +101,30 @@ public class Spesagrafica {
 		lblPrezzo.setBounds(305, 74, 37, 15);
 		lblPrezzo.setText("Prezzo");
 		
+		//aggiungi prodotto
 		Button btnAggiungiProdotto = new Button(shlJackzando, SWT.NONE);
+		btnAggiungiProdotto.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				c=codiceProdotto.getText();
+				d=nome.getText();
+				r=Float.parseFloat(prezzo.getText());
+				try {
+					lista.aggiungiProdotto(s);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnAggiungiProdotto.setBounds(305, 123, 119, 25);
 		btnAggiungiProdotto.setText("Aggiungi Prodotto");
 		
-		Button btnTesseraFedelt = new Button(shlJackzando, SWT.CHECK);
+		btnTesseraFedelt = new Button(shlJackzando, SWT.CHECK);
 		btnTesseraFedelt.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				//System.out.println("Check:" + btnTesseraFedelt.toString());
 			}
 		});
 		btnTesseraFedelt.setBounds(130, 14, 101, 16);
