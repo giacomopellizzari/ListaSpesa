@@ -3,6 +3,9 @@ package it.fabiobiscaro.prodotti;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
+
+import java.io.PrintWriter;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Label;
@@ -22,7 +25,15 @@ public class Spesagrafica {
 	private Text totale;
 	private boolean p;
 	private Button btnTesseraFedelt;
-	private int i;
+	//vaariabile del file
+	
+
+
+	
+	
+	//array di prodotti
+	private Prodotto[] carrello = new Prodotto[100];
+	int num = 0;
 	// codice
 	private String c;
 	// descrizione
@@ -139,6 +150,18 @@ public class Spesagrafica {
 		btnTesseraFedelt.setText("Tessera Fedelt\u00E0");
 		
 		Button btnSalvaScontrino = new Button(shlJackzando, SWT.NONE);
+		btnSalvaScontrino.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				for (int i=0; i<num; i++){
+					Prodotto p= carrello [i];
+					if(p instanceof Alimentare){
+						
+
+					}
+				}
+			}
+		});
 		btnSalvaScontrino.setBounds(10, 92, 101, 25);
 		btnSalvaScontrino.setText("Salva scontrino");
 		
