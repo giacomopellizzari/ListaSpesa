@@ -11,6 +11,7 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.TableColumn;
+import org.eclipse.swt.widgets.Group;
 
 public class Spesagrafica {
 
@@ -77,7 +78,7 @@ public class Spesagrafica {
 			}
 		});
 		aggiungiScontrino.setBounds(10, 10, 114, 25);
-		aggiungiScontrino.setText("Aggiungi scontrino");
+		aggiungiScontrino.setText("Nuovo scontrino");
 		
 		codiceProdotto = new Text(shlJackzando, SWT.BORDER);
 		codiceProdotto.setText("");
@@ -123,7 +124,7 @@ public class Spesagrafica {
 				
 			}
 		});
-		btnAggiungiProdotto.setBounds(305, 123, 119, 25);
+		btnAggiungiProdotto.setBounds(340, 123, 119, 25);
 		btnAggiungiProdotto.setText("Aggiungi Prodotto");
 		
 		btnTesseraFedelt = new Button(shlJackzando, SWT.CHECK);
@@ -148,20 +149,6 @@ public class Spesagrafica {
 		});
 		btnCaricaScontrino.setBounds(10, 123, 101, 25);
 		btnCaricaScontrino.setText("Carica scontrino");
-		
-		Button btnAlimentare = new Button(shlJackzando, SWT.CHECK);
-		btnAlimentare.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				
-			}
-		});
-		btnAlimentare.setBounds(235, 101, 76, 16);
-		btnAlimentare.setText("Alimentare");
-		
-		Button btnNonAlimentare = new Button(shlJackzando, SWT.CHECK);
-		btnNonAlimentare.setBounds(317, 101, 107, 16);
-		btnNonAlimentare.setText("Non alimentare");
 		
 		Button btnCalcolaTotale = new Button(shlJackzando, SWT.NONE);
 		btnCalcolaTotale.setBounds(10, 41, 101, 25);
@@ -199,6 +186,18 @@ public class Spesagrafica {
 		TableColumn tblclmnMateriale = new TableColumn(table, SWT.NONE);
 		tblclmnMateriale.setWidth(65);
 		tblclmnMateriale.setText("Materiale");
+		
+		Group grpTipo = new Group(shlJackzando, SWT.NONE);
+		grpTipo.setText("Tipo");
+		grpTipo.setBounds(185, 66, 114, 82);
+		
+		Button btnRadioButton = new Button(grpTipo, SWT.RADIO);
+		btnRadioButton.setBounds(0, 25, 90, 16);
+		btnRadioButton.setText("Alimentare");
+		
+		Button btnRadioButton_1 = new Button(grpTipo, SWT.RADIO);
+		btnRadioButton_1.setBounds(0, 47, 104, 16);
+		btnRadioButton_1.setText("Non Alimentare");
 
 	}
 }
