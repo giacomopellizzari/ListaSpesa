@@ -22,6 +22,7 @@ public class Spesagrafica {
 	private Text totale;
 	private boolean p;
 	private Button btnTesseraFedelt;
+	private int i;
 	// codice
 	private String c;
 	// descrizione
