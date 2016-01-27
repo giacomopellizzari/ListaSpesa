@@ -68,8 +68,8 @@ public class Spesagrafica {
 		shlJackzando.setSize(508, 398);
 		shlJackzando.setText("Supermercati JAck&ZAndo");
 		
-		Button aggiungiScontrino = new Button(shlJackzando, SWT.NONE);
-		aggiungiScontrino.addSelectionListener(new SelectionAdapter() {
+		Button nuovoScontrino = new Button(shlJackzando, SWT.NONE);
+		nuovoScontrino.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				p=btnTesseraFedelt.getSelection();
@@ -77,8 +77,8 @@ public class Spesagrafica {
 				
 			}
 		});
-		aggiungiScontrino.setBounds(10, 10, 114, 25);
-		aggiungiScontrino.setText("Nuovo scontrino");
+		nuovoScontrino.setBounds(10, 10, 114, 25);
+		nuovoScontrino.setText("Nuovo scontrino");
 		
 		codiceProdotto = new Text(shlJackzando, SWT.BORDER);
 		codiceProdotto.setText("");
