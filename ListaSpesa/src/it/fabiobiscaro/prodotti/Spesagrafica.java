@@ -178,15 +178,18 @@ public class Spesagrafica {
 		TableColumn tblclmnNome = new TableColumn(table, SWT.NONE);
 		tblclmnNome.setWidth(100);
 		tblclmnNome.setText("Nome");
-		tblclmnNome.setText(s.getDescrizione());
+		//tblclmnNome.setText(s.getDescrizione());
 		
 		TableColumn tblclmnCodice = new TableColumn(table, SWT.NONE);
+		tblclmnCodice.setText("Codice");
 		tblclmnCodice.setWidth(74);
 		
 		TableColumn tblclmnPrezzo = new TableColumn(table, SWT.NONE);
+		tblclmnPrezzo.setText("Prezzo");
 		tblclmnPrezzo.setWidth(78);
 		
 		TableColumn tblclmnTipo = new TableColumn(table, SWT.NONE);
+		tblclmnTipo.setText("Tipo");
 		tblclmnTipo.setWidth(36);
 		
 		TableColumn tblclmnDataScadenza = new TableColumn(table, SWT.NONE);
