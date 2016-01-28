@@ -15,6 +15,8 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.custom.TableCursor;
+import org.eclipse.swt.widgets.List;
 
 public class Spesagrafica {
 
@@ -42,7 +44,6 @@ public class Spesagrafica {
 	private float r;
 	ListaSpesa lista= new ListaSpesa(p);
 	Prodotto s;
-	private Table table;
 
 	/**
 	 * Launch the application.
@@ -77,7 +78,7 @@ public class Spesagrafica {
 	 */
 	protected void createContents() {
 		shlJackzando = new Shell();
-		shlJackzando.setSize(508, 398);
+		shlJackzando.setSize(486, 398);
 		shlJackzando.setText("Supermercati JAck&ZAndo");
 		
 		Button aggiungiScontrino = new Button(shlJackzando, SWT.NONE);
@@ -89,6 +90,12 @@ public class Spesagrafica {
 				
 			}
 		});
+		List list = new List(shlJackzando, SWT.BORDER);
+		list.setBounds(10, 154, 449, 196);
+		
+		totale = new Text(shlJackzando, SWT.BORDER);
+		totale.setBounds(117, 45, 76, 21);
+		
 		aggiungiScontrino.setBounds(10, 10, 114, 25);
 		aggiungiScontrino.setText("Nuovo scontrino");
 		
@@ -123,17 +130,18 @@ public class Spesagrafica {
 		btnAggiungiProdotto.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				c=codiceProdotto.getText();
-				d=nome.getText();
-				r=Float.parseFloat(prezzo.getText());
-				s=new Prodotto(c,d,r);
-				try {
-					lista.aggiungiProdotto(s);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
+					c=codiceProdotto.getText();
+					d=nome.getText();
+					r=Float.parseFloat(prezzo.getText());
+					s=new Prodotto(c,d,r);
+					try {
+						lista.aggiungiProdotto(s);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					//scrivi il prodotto sulla lista
+					list.add(s.toString());
 			}
 		});
 		btnAggiungiProdotto.setBounds(340, 123, 119, 25);
@@ -153,13 +161,13 @@ public class Spesagrafica {
 		btnSalvaScontrino.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				for (int i=0; i<num; i++){
-					Prodotto p= carrello [i];
-					if(p instanceof Alimentare){
+				//for (int i=0; i<num; i++){
+					//ListaSpesa p= carrello [i];
+					//if(p instanceof Alimentare){
 						
 
-					}
-				}
+					//}
+				//}
 			}
 		});
 		btnSalvaScontrino.setBounds(10, 92, 101, 25);
@@ -175,53 +183,30 @@ public class Spesagrafica {
 		btnCaricaScontrino.setText("Carica scontrino");
 		
 		Button btnCalcolaTotale = new Button(shlJackzando, SWT.NONE);
+		btnCalcolaTotale.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				String costo = Float.toString(lista.calcolaSpesa());
+				totale.setText(costo);
+			}
+		});
 		btnCalcolaTotale.setBounds(10, 41, 101, 25);
 		btnCalcolaTotale.setText("Calcola totale");
-		
-		totale = new Text(shlJackzando, SWT.BORDER);
-		totale.setBounds(117, 45, 76, 21);
-		
-		table = new Table(shlJackzando, SWT.BORDER | SWT.FULL_SELECTION);
-		table.setBounds(10, 154, 449, 196);
-		table.setHeaderVisible(true);
-		table.setLinesVisible(true);
-		
-		TableColumn tblclmnNome = new TableColumn(table, SWT.NONE);
-		tblclmnNome.setWidth(100);
-		tblclmnNome.setText("Nome");
-		//tblclmnNome.setText(s.getDescrizione());
-		
-		TableColumn tblclmnCodice = new TableColumn(table, SWT.NONE);
-		tblclmnCodice.setText("Codice");
-		tblclmnCodice.setWidth(74);
-		
-		TableColumn tblclmnPrezzo = new TableColumn(table, SWT.NONE);
-		tblclmnPrezzo.setText("Prezzo");
-		tblclmnPrezzo.setWidth(78);
-		
-		TableColumn tblclmnTipo = new TableColumn(table, SWT.NONE);
-		tblclmnTipo.setText("Tipo");
-		tblclmnTipo.setWidth(36);
-		
-		TableColumn tblclmnDataScadenza = new TableColumn(table, SWT.NONE);
-		tblclmnDataScadenza.setWidth(89);
-		tblclmnDataScadenza.setText("Data scadenza");
-		
-		TableColumn tblclmnMateriale = new TableColumn(table, SWT.NONE);
-		tblclmnMateriale.setWidth(65);
-		tblclmnMateriale.setText("Materiale");
 		
 		Group grpTipo = new Group(shlJackzando, SWT.NONE);
 		grpTipo.setText("Tipo");
 		grpTipo.setBounds(185, 66, 114, 82);
 		
-		Button btnRadioButton = new Button(grpTipo, SWT.RADIO);
+		Button btnRadioButton = 
+				new Button(grpTipo, SWT.RADIO);
 		btnRadioButton.setBounds(0, 25, 90, 16);
 		btnRadioButton.setText("Alimentare");
 		
 		Button btnRadioButton_1 = new Button(grpTipo, SWT.RADIO);
 		btnRadioButton_1.setBounds(0, 47, 104, 16);
 		btnRadioButton_1.setText("Non Alimentare");
+		
+
 
 	}
 }
