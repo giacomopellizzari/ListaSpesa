@@ -40,12 +40,12 @@ public class Prodotto implements Cloneable {
 		this.prezzo = this.prezzo * 0.95f;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "COD: " + codice + "   DESCRIZIONE: " + descrizione + "   PREZZO: " + prezzo;
 	}
 
-	@Override
+	@Override*/
 	public boolean equals(Object obj) {
 		// Sono uguali se sono uguali tutti i campi
 		Prodotto p = (Prodotto) obj;

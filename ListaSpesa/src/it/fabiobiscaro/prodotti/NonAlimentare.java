@@ -26,4 +26,8 @@ public class NonAlimentare extends Prodotto {
 			super.applicaSconto();
 		}
 	}
+	
+	public String toString() {
+		return "COD: " + codice + "   DESCRIZIONE: " + descrizione + "   PREZZO: " + prezzo + "  MATERIALE: " + materiale;
+	}
 }

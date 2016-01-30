@@ -12,11 +12,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.widgets.Table;
-import org.eclipse.swt.widgets.TableItem;
-import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.custom.TableCursor;
 import org.eclipse.swt.widgets.List;
 
 public class Spesagrafica {
@@ -27,6 +23,7 @@ public class Spesagrafica {
 	private Text prezzo;
 	private Text totale;
 	private boolean p;
+	private boolean alimentare;
 	private Button btnTesseraFedelt;
 	//vaariabile del file
 	PrintWriter out;
@@ -43,7 +40,7 @@ public class Spesagrafica {
 	private String d;
 	// prexxo
 	private float r;
-	ListaSpesa lista= new ListaSpesa(p);
+	ListaSpesa lista;
 	Prodotto s;
 
 	/**
@@ -94,6 +91,45 @@ public class Spesagrafica {
 
 		List list = new List(shlJackzando, SWT.BORDER);
 		list.setBounds(10, 154, 449, 196);
+
+		
+		btnTesseraFedelt = new Button(shlJackzando, SWT.CHECK);
+		btnTesseraFedelt.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				p=btnTesseraFedelt.getSelection();
+				lista = new ListaSpesa(p);
+			}
+		});
+		btnTesseraFedelt.setBounds(130, 14, 101, 16);
+		btnTesseraFedelt.setText("Tessera Fedelt\u00E0");
+		
+		Group grpTipo = new Group(shlJackzando, SWT.NONE);
+		grpTipo.setText("Tipo");
+		grpTipo.setBounds(185, 66, 114, 82);
+		
+		Button btnAlimentare = new Button(grpTipo, SWT.RADIO);
+		btnAlimentare.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				alimentare=true;
+			}
+		});
+		btnAlimentare.setBounds(0, 25, 90, 16);
+		btnAlimentare.setText("Alimentare");
+		
+		
+		Button btnNonAlimentare = new Button(grpTipo, SWT.RADIO);
+		btnNonAlimentare.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				alimentare=false;
+			}
+		});
+		btnNonAlimentare.setBounds(0, 47, 104, 16);
+		btnNonAlimentare.setText("Non Alimentare");
+
+
 		
 		totale = new Text(shlJackzando, SWT.BORDER);
 		totale.setBounds(117, 45, 76, 21);
@@ -136,29 +172,39 @@ public class Spesagrafica {
 					c=codiceProdotto.getText();
 					d=nome.getText();
 					r=Float.parseFloat(prezzo.getText());
-					s=new Prodotto(c,d,r);
-					try {
-						lista.aggiungiProdotto(s);
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+					if(alimentare==true){
+						Data data=new Data();
+						s=new Alimentare(c,d,r,data);
+						//s=new Prodotto(c,d,r);
+						try {
+							lista.aggiungiProdotto(s);
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						//scrivi il prodotto sulla lista
+						list.add(s.toString());
 					}
-					//scrivi il prodotto sulla lista
-					list.add(s.toString());
+					else{
+						String materiale=new String("Ferro");
+						s=new NonAlimentare(c,d,r,materiale);
+						//s=new Prodotto(c,d,r);
+						try {
+							lista.aggiungiProdotto(s);
+						} catch (Exception e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						//scrivi il prodotto sulla lista
+						list.add(s.toString());
+					}
 			}
 		});
 		btnAggiungiProdotto.setBounds(340, 123, 119, 25);
 		btnAggiungiProdotto.setText("Aggiungi Prodotto");
 		
-		btnTesseraFedelt = new Button(shlJackzando, SWT.CHECK);
-		btnTesseraFedelt.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				//System.out.println("Check:" + btnTesseraFedelt.toString());
-			}
-		});
-		btnTesseraFedelt.setBounds(130, 14, 101, 16);
-		btnTesseraFedelt.setText("Tessera Fedelt\u00E0");
+		
+		
 		
 		Button btnSalvaScontrino = new Button(shlJackzando, SWT.NONE);
 		btnSalvaScontrino.addSelectionListener(new SelectionAdapter() {
@@ -214,18 +260,7 @@ public class Spesagrafica {
 		btnCalcolaTotale.setBounds(10, 41, 101, 25);
 		btnCalcolaTotale.setText("Calcola totale");
 		
-		Group grpTipo = new Group(shlJackzando, SWT.NONE);
-		grpTipo.setText("Tipo");
-		grpTipo.setBounds(185, 66, 114, 82);
 		
-		Button btnRadioButton = 
-				new Button(grpTipo, SWT.RADIO);
-		btnRadioButton.setBounds(0, 25, 90, 16);
-		btnRadioButton.setText("Alimentare");
-		
-		Button btnRadioButton_1 = new Button(grpTipo, SWT.RADIO);
-		btnRadioButton_1.setBounds(0, 47, 104, 16);
-		btnRadioButton_1.setText("Non Alimentare");
 		
 
 
