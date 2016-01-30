@@ -42,7 +42,7 @@ public class Prodotto implements Cloneable {
 
 	@Override
 	public String toString() {
-		return "Cod: " + codice + " descrizione: " + descrizione + " prezzo:" + prezzo;
+		return "COD: " + codice + "   DESCRIZIONE: " + descrizione + "   PREZZO: " + prezzo;
 	}
 
 	@Override
