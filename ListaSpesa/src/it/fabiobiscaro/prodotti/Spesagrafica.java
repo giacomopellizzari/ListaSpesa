@@ -92,7 +92,6 @@ public class Spesagrafica {
 			}
 		});
 
-		
 		List list = new List(shlJackzando, SWT.BORDER);
 		list.setBounds(10, 154, 449, 196);
 		
@@ -101,6 +100,7 @@ public class Spesagrafica {
 		
 		aggiungiScontrino.setBounds(10, 10, 114, 25);
 		aggiungiScontrino.setText("Nuovo scontrino");
+		
 		
 		codiceProdotto = new Text(shlJackzando, SWT.BORDER);
 		codiceProdotto.setText("");
