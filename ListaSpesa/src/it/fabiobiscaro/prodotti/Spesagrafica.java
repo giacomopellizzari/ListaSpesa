@@ -33,7 +33,7 @@ public class Spesagrafica {
 	
 	//array di prodotti
 	private Prodotto[] carrello = new Prodotto[100];
-	int num = 0;
+	int num = 10;
 	// codice
 	private String c;
 	// descrizione
@@ -215,8 +215,9 @@ public class Spesagrafica {
 					out = new PrintWriter("Lista_della_spesa.txt");
 					out.println( "Lista della spesa" );
 					for (int i=0; i<num; i++){
-						Prodotto p= carrello [i];
-						if(p instanceof Alimentare){
+						System.out.println("entra nel for");
+						s= carrello [i];
+						if(s instanceof Alimentare){
 							System.out.println("Alimentare");
 							out.println( "Alimentare" );
 							out.println( "p.getDescrizione()" );
