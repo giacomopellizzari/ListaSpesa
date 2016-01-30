@@ -4,6 +4,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Button;
 
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 import org.eclipse.swt.SWT;
@@ -28,7 +29,7 @@ public class Spesagrafica {
 	private boolean p;
 	private Button btnTesseraFedelt;
 	//vaariabile del file
-	
+	PrintWriter out;
 
 
 	
@@ -90,6 +91,8 @@ public class Spesagrafica {
 				
 			}
 		});
+
+		
 		List list = new List(shlJackzando, SWT.BORDER);
 		list.setBounds(10, 154, 449, 196);
 		
@@ -161,13 +164,31 @@ public class Spesagrafica {
 		btnSalvaScontrino.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				//for (int i=0; i<num; i++){
-					//ListaSpesa p= carrello [i];
-					//if(p instanceof Alimentare){
-						
-
-					//}
-				//}
+				//dichiarazione stringa
+				try {
+					out = new PrintWriter("Lista_della_spesa.txt");
+					out.println( "Lista della spesa" );
+					for (int i=0; i<num; i++){
+						Prodotto p= carrello [i];
+						if(p instanceof Alimentare){
+							System.out.println("Alimentare");
+							out.println( "Alimentare" );
+							out.println( "p.getDescrizione()" );
+							out.println( "p.getCodice ");
+							out.println( "p.getPrezzo ");
+						}else{
+							System.out.println("Non Alimentare");
+							out.println( "Non Alimentare ");
+							out.println( "p.getDescrizione()" );
+							out.println( "p.getCodice ");
+							out.println( "p.getPrezzo ");
+						}
+					}
+					out.close();
+				} catch (FileNotFoundException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
 			}
 		});
 		btnSalvaScontrino.setBounds(10, 92, 101, 25);
