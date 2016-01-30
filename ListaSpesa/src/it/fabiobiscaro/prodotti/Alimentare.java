@@ -31,4 +31,8 @@ public class Alimentare extends Prodotto {
 		}
 	}
 	
+	public String toString() {
+		return "COD: " + codice + "   DESCRIZIONE: " + descrizione + "   PREZZO: " + prezzo + "   DATA: "+ scadenza;
+	}
+	
 }
