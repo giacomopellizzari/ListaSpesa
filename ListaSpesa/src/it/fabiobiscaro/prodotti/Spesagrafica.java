@@ -28,7 +28,7 @@ public class Spesagrafica {
 	//vaariabile del file
 	PrintWriter out;
 
-
+	//ciao zandi
 	
 	
 	//array di prodotti
