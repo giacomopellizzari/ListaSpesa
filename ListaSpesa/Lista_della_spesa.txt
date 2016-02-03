@@ -1,0 +1,41 @@
+Lista della spesa
+Non Alimentare 
+p.getDescrizione()
+p.getCodice 
+p.getPrezzo 
+Non Alimentare 
+p.getDescrizione()
+p.getCodice 
+p.getPrezzo 
+Non Alimentare 
+p.getDescrizione()
+p.getCodice 
+p.getPrezzo 
+Non Alimentare 
+p.getDescrizione()
+p.getCodice 
+p.getPrezzo 
+Non Alimentare 
+p.getDescrizione()
+p.getCodice 
+p.getPrezzo 
+Non Alimentare 
+p.getDescrizione()
+p.getCodice 
+p.getPrezzo 
+Non Alimentare 
+p.getDescrizione()
+p.getCodice 
+p.getPrezzo 
+Non Alimentare 
+p.getDescrizione()
+p.getCodice 
+p.getPrezzo 
+Non Alimentare 
+p.getDescrizione()
+p.getCodice 
+p.getPrezzo 
+Non Alimentare 
+p.getDescrizione()
+p.getCodice 
+p.getPrezzo 
