@@ -42,6 +42,10 @@ public class Spesagrafica {
 	private float r;
 	ListaSpesa lista;
 	Prodotto s;
+	private Text materialetxt;
+	private Text gg;
+	private Text mm;
+	private Text aa;
 
 	/**
 	 * Launch the application.
@@ -76,7 +80,7 @@ public class Spesagrafica {
 	 */
 	protected void createContents() {
 		shlJackzando = new Shell();
-		shlJackzando.setSize(486, 398);
+		shlJackzando.setSize(486, 446);
 		shlJackzando.setText("Supermercati JAck&ZAndo");
 		
 		Button aggiungiScontrino = new Button(shlJackzando, SWT.NONE);
@@ -88,9 +92,37 @@ public class Spesagrafica {
 				
 			}
 		});
-
+		
+		materialetxt = new Text(shlJackzando, SWT.BORDER);
+		materialetxt.setBounds(383, 127, 76, 21);
+		
+		Label lblMateriale = new Label(shlJackzando, SWT.NONE);
+		lblMateriale.setBounds(322, 128, 55, 15);
+		lblMateriale.setText("Materiale");
+		
+		gg = new Text(shlJackzando, SWT.BORDER);
+		gg.setBounds(322, 173, 37, 21);
+		
+		mm = new Text(shlJackzando, SWT.BORDER);
+		mm.setBounds(365, 173, 37, 21);
+		
+		aa = new Text(shlJackzando, SWT.BORDER);
+		aa.setBounds(408, 173, 51, 21);
+		
+		Label lblGg = new Label(shlJackzando, SWT.NONE);
+		lblGg.setBounds(322, 152, 22, 15);
+		lblGg.setText("GG");
+		
+		Label lblMm = new Label(shlJackzando, SWT.NONE);
+		lblMm.setBounds(365, 152, 22, 15);
+		lblMm.setText("MM");
+		
+		Label lblAaaa = new Label(shlJackzando, SWT.NONE);
+		lblAaaa.setBounds(408, 152, 55, 15);
+		lblAaaa.setText("AAAA");
+		
 		List list = new List(shlJackzando, SWT.BORDER);
-		list.setBounds(10, 154, 449, 196);
+		list.setBounds(10, 202, 449, 196);
 
 		
 		btnTesseraFedelt = new Button(shlJackzando, SWT.CHECK);
@@ -106,7 +138,7 @@ public class Spesagrafica {
 		
 		Group grpTipo = new Group(shlJackzando, SWT.NONE);
 		grpTipo.setText("Tipo");
-		grpTipo.setBounds(185, 66, 114, 82);
+		grpTipo.setBounds(202, 71, 114, 82);
 		
 		Button btnAlimentare = new Button(grpTipo, SWT.RADIO);
 		btnAlimentare.addSelectionListener(new SelectionAdapter() {
@@ -140,28 +172,28 @@ public class Spesagrafica {
 		
 		codiceProdotto = new Text(shlJackzando, SWT.BORDER);
 		codiceProdotto.setText("");
-		codiceProdotto.setBounds(348, 14, 76, 21);
+		codiceProdotto.setBounds(383, 12, 76, 21);
 		
 		
 		nome = new Text(shlJackzando, SWT.BORDER);
-		nome.setBounds(348, 41, 76, 21);
+		nome.setBounds(383, 41, 76, 21);
 		
 		
 		prezzo = new Text(shlJackzando, SWT.BORDER);
-		prezzo.setBounds(348, 68, 76, 21);
+		prezzo.setBounds(383, 71, 76, 21);
 		
 		
 		
 		Label lblcodiceProdotto = new Label(shlJackzando, SWT.NONE);
-		lblcodiceProdotto.setBounds(252, 20, 90, 15);
+		lblcodiceProdotto.setBounds(287, 20, 90, 15);
 		lblcodiceProdotto.setText("Codice Prodotto");
 		
 		Label lblNomeProdotto = new Label(shlJackzando, SWT.NONE);
-		lblNomeProdotto.setBounds(259, 47, 83, 15);
+		lblNomeProdotto.setBounds(294, 48, 83, 15);
 		lblNomeProdotto.setText("Nome Prodotto");
 		
 		Label lblPrezzo = new Label(shlJackzando, SWT.NONE);
-		lblPrezzo.setBounds(305, 74, 37, 15);
+		lblPrezzo.setBounds(340, 77, 37, 15);
 		lblPrezzo.setText("Prezzo");
 		
 		//aggiungi prodotto
@@ -186,7 +218,7 @@ public class Spesagrafica {
 						list.add(s.toString());
 					}
 					else{
-						String materiale=new String("Ferro");
+						String materiale=new String(materialetxt.getText());
 						s=new NonAlimentare(c,d,r,materiale);
 						//s=new Prodotto(c,d,r);
 						try {
@@ -200,7 +232,7 @@ public class Spesagrafica {
 					}
 			}
 		});
-		btnAggiungiProdotto.setBounds(340, 123, 119, 25);
+		btnAggiungiProdotto.setBounds(197, 171, 119, 25);
 		btnAggiungiProdotto.setText("Aggiungi Prodotto");
 		
 		
@@ -238,7 +270,7 @@ public class Spesagrafica {
 				}
 			}
 		});
-		btnSalvaScontrino.setBounds(10, 92, 101, 25);
+		btnSalvaScontrino.setBounds(10, 138, 101, 25);
 		btnSalvaScontrino.setText("Salva scontrino");
 		
 		Button btnCaricaScontrino = new Button(shlJackzando, SWT.NONE);
@@ -247,7 +279,7 @@ public class Spesagrafica {
 			public void widgetSelected(SelectionEvent e) {
 			}
 		});
-		btnCaricaScontrino.setBounds(10, 123, 101, 25);
+		btnCaricaScontrino.setBounds(10, 169, 101, 25);
 		btnCaricaScontrino.setText("Carica scontrino");
 		
 		Button btnCalcolaTotale = new Button(shlJackzando, SWT.NONE);
@@ -261,9 +293,6 @@ public class Spesagrafica {
 		btnCalcolaTotale.setBounds(10, 41, 101, 25);
 		btnCalcolaTotale.setText("Calcola totale");
 		
-		
-		
-
 
 	}
 }
