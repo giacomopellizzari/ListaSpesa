@@ -205,7 +205,10 @@ public class Spesagrafica {
 					d=nome.getText();
 					r=Float.parseFloat(prezzo.getText());
 					if(alimentare==true){
-						Data data=new Data();
+						int x = Integer.parseInt(gg.getText());
+						int y = Integer.parseInt(mm.getText());
+						int z = Integer.parseInt(aa.getText());
+						Data data=new Data(x,y,z);
 						s=new Alimentare(c,d,r,data);
 						//s=new Prodotto(c,d,r);
 						try {
@@ -258,9 +261,9 @@ public class Spesagrafica {
 						}else{
 							System.out.println("Non Alimentare");
 							out.println( "Non Alimentare ");
-							out.println( "p.getDescrizione()" );
-							out.println( "p.getCodice ");
-							out.println( "p.getPrezzo ");
+							out.println( s.getDescrizione() );
+							out.println(String.valueOf(s.getCodice()));
+							out.println( String.valueOf(s.getPrezzo()) );
 						}
 					}
 					out.close();
