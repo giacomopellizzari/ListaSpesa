@@ -7,6 +7,9 @@ import org.eclipse.swt.widgets.Button;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+import javax.swing.JOptionPane;
+//import javax.swing.UIManager;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Label;
@@ -122,6 +125,16 @@ public class Spesagrafica {
 				System.out.println(p);
 				lista = new ListaSpesa(p);
 				list.removeAll();
+				String costo = Float.toString(lista.calcolaSpesa());
+				totale.setText(costo);
+				codiceProdotto.setText("");
+				nome.setText("");
+				prezzo.setText("");
+				gg.setText("");
+				mm.setText("");
+				aa.setText("");
+				materialetxt.setText("");
+				
 			}
 		});
 		
@@ -200,37 +213,43 @@ public class Spesagrafica {
 		btnAggiungiProdotto.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-					c=codiceProdotto.getText();
-					d=nome.getText();
-					r=Float.parseFloat(prezzo.getText());
 					if(alimentare==true){
-						int x = Integer.parseInt(gg.getText());
-						int y = Integer.parseInt(mm.getText());
-						int z = Integer.parseInt(aa.getText());
-						Data data=new Data(x,y,z);
-						s=new Alimentare(c,d,r,data);
-						//s=new Prodotto(c,d,r);
 						try {
+							c=codiceProdotto.getText();
+							d=nome.getText();
+							r=Float.parseFloat(prezzo.getText());
+							int x = Integer.parseInt(gg.getText());
+							int y = Integer.parseInt(mm.getText());
+							int z = Integer.parseInt(aa.getText());
+							Data data=new Data(x,y,z);
+							s=new Alimentare(c,d,r,data);
+							//s=new Prodotto(c,d,r);
 							lista.aggiungiProdotto(s);
+							//scrivi il prodotto sulla lista
+							list.add(s.toString());
 						} catch (Exception e1) {
 							// TODO Auto-generated catch block
+							JOptionPane.showMessageDialog(null,"Sei un .... Sbadato.. Ti sei dimenticato di qualcosa","Error",JOptionPane.ERROR_MESSAGE);
 							e1.printStackTrace();
 						}
-						//scrivi il prodotto sulla lista
-						list.add(s.toString());
 					}
 					else{
-						String materiale=new String(materialetxt.getText());
-						s=new NonAlimentare(c,d,r,materiale);
-						//s=new Prodotto(c,d,r);
 						try {
+							c=codiceProdotto.getText();
+							d=nome.getText();
+							r=Float.parseFloat(prezzo.getText());
+							String materiale=new String(materialetxt.getText());
+							s=new NonAlimentare(c,d,r,materiale);
+							//s=new Prodotto(c,d,r);
 							lista.aggiungiProdotto(s);
+							//scrivi il prodotto sulla lista
+							list.add(s.toString());
 						} catch (Exception e1) {
 							// TODO Auto-generated catch block
+							JOptionPane.showMessageDialog(null,"Sei un .... Sbadato.. Ti sei dimenticato di qualcosa","Error",JOptionPane.ERROR_MESSAGE);
 							e1.printStackTrace();
 						}
-						//scrivi il prodotto sulla lista
-						list.add(s.toString());
+						
 					}
 			}
 		});
