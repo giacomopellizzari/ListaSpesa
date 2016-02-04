@@ -1,7 +1,7 @@
 package it.fabiobiscaro.prodotti;
 
 public class ListaSpesa {
-	private Prodotto lista[];
+	protected Prodotto lista[];
 	private int numProdotti;
 	private boolean tesseraFedeltà;
 	private final int MAX_PRODOTTI = 100;

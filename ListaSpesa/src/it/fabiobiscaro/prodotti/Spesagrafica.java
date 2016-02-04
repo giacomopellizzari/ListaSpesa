@@ -28,12 +28,10 @@ public class Spesagrafica {
 	//vaariabile del file
 	PrintWriter out;
 
-	//ciao zandi
-	
 	
 	//array di prodotti
 	private Prodotto[] carrello = new Prodotto[100];
-	int num = 10;
+	int num = 0;
 	// codice
 	private String c;
 	// descrizione
@@ -203,6 +201,7 @@ public class Spesagrafica {
 					c=codiceProdotto.getText();
 					d=nome.getText();
 					r=Float.parseFloat(prezzo.getText());
+					num=num+1;
 					if(alimentare==true){
 						int x = Integer.parseInt(gg.getText());
 						int y = Integer.parseInt(mm.getText());
@@ -231,6 +230,7 @@ public class Spesagrafica {
 						}
 						//scrivi il prodotto sulla lista
 						list.add(s.toString());
+						System.out.println(lista.lista[0]);
 					}
 			}
 		});
@@ -250,19 +250,19 @@ public class Spesagrafica {
 					out.println( "Lista della spesa" );
 					for (int i=0; i<num; i++){
 						System.out.println("entra nel for");
-						s= carrello [i];
 						if(s instanceof Alimentare){
 							System.out.println("Alimentare");
 							out.println( "Alimentare" );
-							out.println( "p.getDescrizione()" );
-							out.println( "p.getCodice ");
-							out.println( "p.getPrezzo ");
+							out.println( lista.lista[i].getDescrizione() );
+							out.println( String.valueOf(s.getCodice()) );
+							out.println( String.valueOf(s.getPrezzo()) );
 						}else{
 							System.out.println("Non Alimentare");
+							System.out.println("i: " + i);
 							out.println( "Non Alimentare ");
-							out.println( s.getDescrizione() );
-							out.println(String.valueOf(s.getCodice()));
-							out.println( String.valueOf(s.getPrezzo()) );
+							out.println( lista.lista[i].getDescrizione() );
+							//out.println( String.valueOf(s.getCodice()) );
+							//out.println( String.valueOf(s.getPrezzo()) );
 						}
 					}
 					out.close();
