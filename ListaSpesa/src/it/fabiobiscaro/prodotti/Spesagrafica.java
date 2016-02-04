@@ -83,16 +83,6 @@ public class Spesagrafica {
 		shlJackzando.setSize(486, 446);
 		shlJackzando.setText("Supermercati JAck&ZAndo");
 		
-		Button aggiungiScontrino = new Button(shlJackzando, SWT.NONE);
-		aggiungiScontrino.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				p=btnTesseraFedelt.getSelection();
-				System.out.println(p);
-				
-			}
-		});
-		
 		materialetxt = new Text(shlJackzando, SWT.BORDER);
 		materialetxt.setBounds(383, 127, 76, 21);
 		
@@ -124,13 +114,22 @@ public class Spesagrafica {
 		List list = new List(shlJackzando, SWT.BORDER);
 		list.setBounds(10, 202, 449, 196);
 
+		Button aggiungiScontrino = new Button(shlJackzando, SWT.NONE);
+		aggiungiScontrino.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				p=btnTesseraFedelt.getSelection();
+				System.out.println(p);
+				lista = new ListaSpesa(p);
+				list.removeAll();
+			}
+		});
 		
 		btnTesseraFedelt = new Button(shlJackzando, SWT.CHECK);
 		btnTesseraFedelt.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				p=btnTesseraFedelt.getSelection();
-				lista = new ListaSpesa(p);
 			}
 		});
 		btnTesseraFedelt.setBounds(130, 14, 101, 16);
