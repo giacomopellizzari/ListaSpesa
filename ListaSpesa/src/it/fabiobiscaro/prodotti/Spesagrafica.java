@@ -47,7 +47,7 @@ public class Spesagrafica {
 	private Text gg;
 	private Text mm;
 	private Text aa;
-
+	int n;
 	/**
 	 * Launch the application.
 	 * @param args
@@ -116,10 +116,9 @@ public class Spesagrafica {
 		list.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				int n=list.getSelectionIndex();
-				if(list.getEnabled()==true){
-					list.remove(n);
-				}
+
+				n=list.getSelectionIndex();
+
 			}
 		});
 		list.setBounds(10, 202, 449, 196);
@@ -344,6 +343,19 @@ public class Spesagrafica {
 		});
 		btnCalcolaTotale.setBounds(10, 41, 101, 25);
 		btnCalcolaTotale.setText("Calcola totale");
+		
+		Button btnEliminaProdotto = new Button(shlJackzando, SWT.NONE);
+		btnEliminaProdotto.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				System.out.println(list.getEnabled());
+				if(list.getEnabled()==true){
+					list.remove(n);
+				}
+			}
+		});
+		btnEliminaProdotto.setBounds(10, 99, 101, 25);
+		btnEliminaProdotto.setText("Elimina Prodotto");
 		
 
 	}
