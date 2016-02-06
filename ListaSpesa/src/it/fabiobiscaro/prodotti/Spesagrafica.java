@@ -113,6 +113,15 @@ public class Spesagrafica {
 		lblAaaa.setText("AAAA");
 		
 		List list = new List(shlJackzando, SWT.BORDER);
+		list.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				int n=list.getSelectionIndex();
+				if(list.getEnabled()==true){
+					list.remove(n);
+				}
+			}
+		});
 		list.setBounds(10, 202, 449, 196);
 
 		Button aggiungiScontrino = new Button(shlJackzando, SWT.NONE);
@@ -155,6 +164,16 @@ public class Spesagrafica {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				alimentare=true;
+				materialetxt.setEnabled(false);
+				lblMateriale.setEnabled(false);
+				
+				//abilita
+				gg.setEnabled(true);
+				mm.setEnabled(true);
+				aa.setEnabled(true);
+				lblGg.setEnabled(true);
+				lblMm.setEnabled(true);
+				lblAaaa.setEnabled(true);
 			}
 		});
 		btnAlimentare.setBounds(0, 25, 90, 16);
@@ -166,6 +185,16 @@ public class Spesagrafica {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				alimentare=false;
+				gg.setEnabled(false);
+				mm.setEnabled(false);
+				aa.setEnabled(false);
+				lblGg.setEnabled(false);
+				lblMm.setEnabled(false);
+				lblAaaa.setEnabled(false);
+				
+				//abilita
+				materialetxt.setEnabled(true);
+				lblMateriale.setEnabled(true);
 			}
 		});
 		btnNonAlimentare.setBounds(0, 47, 104, 16);
@@ -211,6 +240,7 @@ public class Spesagrafica {
 		btnAggiungiProdotto.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				num++;
 				if(alimentare==true){
 						try {
 							c=codiceProdotto.getText();
@@ -265,23 +295,24 @@ public class Spesagrafica {
 				try {
 					out = new PrintWriter("Lista_della_spesa.txt");
 					out.println( "Lista della spesa" );
-					num++;
 					for (int i=0; i<num; i++){
 						System.out.println("entra nel for");
 						if(s instanceof Alimentare){
 							System.out.println("Alimentare");
 							out.println( "Alimentare" );
 							out.println( lista.lista[i].getDescrizione() );
-							out.println( String.valueOf(s.getCodice()) );
-							out.println( String.valueOf(s.getPrezzo()) );
+							out.println( String.valueOf(lista.lista[i].getCodice()) );
+							out.println( String.valueOf(lista.lista[i].getPrezzo()) );
+							//out.println( String.valueOf(lista.lista[i].getScadenza().toString());
 						}else{
 							System.out.println("Non Alimentare");
 							System.out.println("i: " + i);
 							out.println( "Non Alimentare ");
 							out.println( lista.lista[i].getDescrizione() );
-							//out.println( String.valueOf(s.getCodice()) );
-							//out.println( String.valueOf(s.getPrezzo()) );
+							out.println( String.valueOf(lista.lista[i].getCodice()) );
+							out.println( String.valueOf(lista.lista[i].getPrezzo()) );
 						}
+						
 					}
 					out.close();
 				} catch (FileNotFoundException e2) {
@@ -308,6 +339,7 @@ public class Spesagrafica {
 			public void widgetSelected(SelectionEvent e) {
 				String costo = Float.toString(lista.calcolaSpesa());
 				totale.setText(costo);
+
 			}
 		});
 		btnCalcolaTotale.setBounds(10, 41, 101, 25);

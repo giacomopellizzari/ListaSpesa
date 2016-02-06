@@ -1,3 +1,9 @@
 Lista della spesa
 Non Alimentare 
 pollo
+654
+42.75
+Non Alimentare 
+ladro
+4567
+2.85
